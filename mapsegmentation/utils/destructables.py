@@ -5,7 +5,9 @@ from sc2.unit import Unit
 
 
 def change_destructable_status(  # noqa: C901
-    grid: np.ndarray, unit: Unit, status: int
+    grid: np.ndarray,
+    unit: Unit,
+    status: int
 ) -> None:
     """
     Source:
@@ -25,6 +27,10 @@ def change_destructable_status(  # noqa: C901
     # this is checked with name because the id of the small mineral destructables
     # has changed over patches and may cause problems
     if name == "MineralField450":
+        x = int(pos[0]) - 1
+        y = int(pos[1])
+        grid[x : (x + 2), y] = status
+    if name == "RichMineralField":
         x = int(pos[0]) - 1
         y = int(pos[1])
         grid[x : (x + 2), y] = status
@@ -165,6 +171,7 @@ destructable_12x4 = {
 }
 
 destructable_6x6 = {
+    UnitTypeId.DESTRUCTIBLEEXPEDITIONGATE6X6,
     UnitTypeId.DESTRUCTIBLECITYDEBRIS6X6,
     UnitTypeId.DESTRUCTIBLEDEBRIS6X6,
     UnitTypeId.DESTRUCTIBLEICE6X6,

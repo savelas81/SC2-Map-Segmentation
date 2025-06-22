@@ -33,7 +33,10 @@ EMPTY_REGION_INDEX = 0
 
 
 def map_segmentation(
-    bot: BotAIInternal, configs_path: str = "MapSegmentation/configs"
+    bot: BotAIInternal, configs_path: str = "MapSegmentation/configs"    #  for aiarena ladder comment this line
+    # bot: BotAIInternal, configs_path: str = "data/msconfigs"           #  and uncomment this line
+                                                                         # Also copy MapSegmentation/configs content
+                                                                         # to your bots data/msconfigs
 ) -> SegmentedMap:
     """
     Performs map segmentation based on the given bot and configuration path.
